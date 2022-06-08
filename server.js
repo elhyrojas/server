@@ -3,12 +3,15 @@ const http = require("http");
 const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
 const twilio = require("twilio");
+const path = require("path");
 
 const PORT = process.env.PORT || 5002;
 const app = express();
 const server = http.createServer(app);
 
 app.use(cors());
+
+app.use(express.static(path.join(__dirname + "/public")));
 
 let connectedUsers = [];
 let rooms = [];
